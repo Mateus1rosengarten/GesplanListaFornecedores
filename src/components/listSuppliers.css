@@ -1,0 +1,41 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    margin-left: 10vw;
+    margin-top: 20vh;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  .fav-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    outline: none;
+    font-size: large;
+    margin-left: 35%;
+  }
+
+
+
+  .form-checkbox {
+    margin-left: 1vw;
+  }
+
+  .star{
+    color: black;
+  }
+  .fav-star{
+    color: #FF9B50;
+  }
+
+  
