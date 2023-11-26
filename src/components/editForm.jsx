@@ -21,7 +21,7 @@ import {
 function EditForm() {
   const { editSupplierValues, setEditSupplierValues, singleID } = useContext(suppliersDataContext);
   const { setIsOpenUpdate } = useContext(modalPopUpContext);
-  const [setDataFormIsValid] = useState(false);
+  const [dataFormIsValid,setDataFormIsValid] = useState(false);
   const [enableMorePhone, setEnableMorePhone] = useState(false);
   const toast = useToast();
 
