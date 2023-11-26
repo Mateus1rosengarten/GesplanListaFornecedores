@@ -20,7 +20,7 @@ import { useEffect } from "react";
 function AddForm() {
   const { supplierValues, setSupplierValues } = useContext(suppliersDataContext);
   const { setIsOpenCreate } = useContext(modalPopUpContext);
-  const [setDataFormIsValid] = useState(false);
+  const [dataFormIsValid,setDataFormIsValid] = useState(false);
   const toast = useToast();
 
   const closingModal = () => {
