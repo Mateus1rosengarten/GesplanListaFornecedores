@@ -1,17 +1,17 @@
+require('dotenv').config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
 const SuppliersControllers = require("./controllers/suppliersControllers");
-const { initDB } = require("./models/DBinit");
-const {Pool , Client} = require('pg');
+const {Pool} = require('pg');
 
 const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'suppliersGesplan',
-  password: '1131',
-  port: '5432',
-})
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_DATABASE,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
+});
 
 
 
@@ -19,7 +19,7 @@ const connectDB = async () => {
   const client = await pool.connect();
   try { 
   const {rows} = await client.query('SELECT current_user');
-  const currentUser = rows[0]['current_user']
+  const currentUser = rows[0]['current_user'];
   console.log('usuario:',currentUser);
   }
   catch(error) {
@@ -27,18 +27,18 @@ const connectDB = async () => {
   }
   finally{
     client.release();
-  }
-} 
+  };
+};
 
 connectDB();
 
 
 
-// Midlewares
+
 app.use(cors());
 app.use(express.json());
 
-// Routes
+
 app.get("/show", SuppliersControllers.getAllSuppliers);
 app.post("/create", SuppliersControllers.createSupplier);
 app.post("/update/:id", SuppliersControllers.updateSupplier);

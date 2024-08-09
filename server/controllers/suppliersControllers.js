@@ -4,8 +4,6 @@ module.exports = class SuppliersControllers {
   static async createSupplier(req, res) {
     try {
       const newUser = req.body;
-      // newUser.created_at = new Date().toISOString();
-      // newUser.fav = false;
       const newUserCreated = await suppliersDAO.createSupplier(newUser);
 
       
