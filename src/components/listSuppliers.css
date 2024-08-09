@@ -1,15 +1,50 @@
+.container-form-list{
+  display: flex;
+  justify-content: center;
+  margin-top: 5vh;
+  overflow-x: auto;
+  margin-bottom: 2vh;
+
+}
+
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 80%;
-    margin-left: 10vw;
-    margin-top: 20vh;
+    min-width: 83%;
+    margin-right: 2vw;
+    margin-left: 2vw;
+
   }
   
   td, th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+  }
+
+ 
+  .th-name{
+    width: 15%;
+  }
+
+  .th-email {
+    width: 20%;
+  }
+
+  .th-number{
+    width: 10%;
+  }
+
+  .th-kind-supplier{
+    width: 10%;
+  }
+
+  .th-details{
+    width: 20%;
+  }
+
+  .th-fav ,.th-check{
+    width: 5%;
   }
   
   tr:nth-child(even) {
@@ -38,4 +73,52 @@ table {
     color: #FF9B50;
   }
 
+  @media (max-width: 840px) {
+  .container-form-list {
+    padding: 0 1rem;
+  }
+
+  table {
+    font-size: 1rem;
   
+  }
+
+  td,th {
+  padding: 4px;
+ 
+  }
+  
+
+  .fav-button {
+    margin-left:95% ;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: block; /* Make the table elements block */
+  }
+
+  th, td {
+    text-align: left; /* Align text to the right */
+    position: relative; /* Add relative positioning */
+    padding-left: 2%;
+    
+  }
+
+  th::before, td::before {
+    position: absolute; /* Position the labels absolutely */
+    top: 0; /* Align to top */
+    left: 6px; /* Align to the left */
+    width: 45%; /* Adjust width */
+    padding-right: 10px; /* Add padding */
+    white-space: nowrap; /* Prevent wrapping */
+    font-weight: bold; /* Make labels bold */
+  }
+  
+  thead {
+    display: none;
+  }
+
+  .td-name{
+    font-weight: bold;
+  }
+}

@@ -6,19 +6,19 @@ function SuppliersDataContext({ children }) {
   const [singleID, setSingleID] = useState("");
   const [multipleID, setMultipleID] = useState([]);
   const [supplierValues, setSupplierValues] = useState({
-    nameSupplier: "",
-    emailSupplier: "",
-    numberSupplier: "",
-    kindOfSupplier: "",
-    detailsSupplier: "",
+    namesupplier: "",
+    emailsupplier: "",
+    numbersupplier: "",
+    kindofsupplier: "",
+    detailsupplier: "",
     fav: false,
   });
   const [editSupplierValues, setEditSupplierValues] = useState({
-    nameSupplier: "",
-    emailSupplier: "",
-    numberSupplier: "",
-    kindOfSupplier: "",
-    detailsSupplier: "",
+    namesupplier: "",
+    emailsupplier: "",
+    numbersupplier: "",
+    kindofsupplier: "",
+    detailsupplier: "",
   });
 
   return (

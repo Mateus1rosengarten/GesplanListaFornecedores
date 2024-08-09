@@ -40,7 +40,6 @@ function DeleteButton() {
         onClick={deletingSuppliers}
         colorScheme="red"
         variant="outline"
-        size="sm"
         className="delete-button"
         isDisabled={!allowToDelete ? true : false}
       >

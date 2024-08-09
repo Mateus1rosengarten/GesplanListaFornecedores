@@ -38,7 +38,7 @@ function EditButton() {
       <Button
         onClick={openingModal}
         colorScheme="teal"
-        size="sm"
+        
         className="edit-button"
         isDisabled={!allowToEdit ? true : false}
       >

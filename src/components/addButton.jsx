@@ -17,15 +17,16 @@ function AddButton() {
 
   return (
     <>
+    <div className="div-button-add"> 
       <Button
         onClick={openingModal}
         colorScheme="teal"
-        size="sm"
         className="add-button"
-        w="12%"
+        w="20%"
       >
         Novo
       </Button>
+      </div>
     </>
   );
 }

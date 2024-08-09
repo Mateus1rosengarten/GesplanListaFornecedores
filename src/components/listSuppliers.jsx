@@ -31,15 +31,15 @@ function ListSuppliers() {
 
   useEffect(() => {
     const documentToUpdate = suppliersArray.find(
-      (item) => item._id === savingID
+      (item) => item.id === savingID
     );
 
     if (documentToUpdate) {
       const fav = documentToUpdate.fav;
-      axios.post(`http://localhost:3000/update/${savingID}`, { fav })
+      axios.post(`http://localhost:3000/updateFav/${savingID}`, { fav })
         .then((response) => {
           console.log("success in updateFavStatus function", response);
-          setSavinID("");
+          setSavinID('');
         })
         .catch((error) => {
           console.log("error in updateFavStatus function", error);
@@ -51,16 +51,17 @@ function ListSuppliers() {
 
   return (
     <>
+    <div className="container-form-list"> 
       <table>
         <thead>
           <tr>
-            <th></th>
-            <th>Nome</th>
-            <th>E-mail</th>
-            <th>Telefone</th>
-            <th>Tipo de Fornecedor</th>
-            <th>Observação</th>
-            <th>Favoritar</th>
+            <th className="th-check"></th>
+            <th className="th-name">Nome</th>
+            <th className="th-email">E-mail</th>
+            <th className="th-number">Telefone</th>
+            <th className="th-kind-supplier">Tipo de Fornecedor</th>
+            <th className="th-details">Observação</th>
+            <th className="th-fav">Favoritar</th>
           </tr>
         </thead>
         <tbody>
@@ -69,19 +70,19 @@ function ListSuppliers() {
               a.fav === b.fav ? 0 : b.fav ? 1 : -1
             )),
             supplierArraySorted.map((item) => (
-              <tr key={item._id}>
+              <tr key={item.id}>
                 <td>
                   <input
                     onChange={(event) => {
                       const isChecked = event.target.checked;
 
                       if (isChecked) {
-                        const supplierID = item._id;
+                        const supplierID = item.id;
 
                         setSingleID(supplierID);
                         setMultipleID((prevsIDs) => [...prevsIDs, supplierID]);
                       } else {
-                        const supplierID = item._id;
+                        const supplierID = item.id;
 
                         setSingleID("");
                         {
@@ -96,11 +97,13 @@ function ListSuppliers() {
                     className="form-checkbox"
                   />
                 </td>
-                <td>{item.nameSupplier}</td>
-                <td>{item.emailSupplier}</td>
-                <td>{item.numberSupplier}</td>
-                <td>{item.kindOfSupplier}</td>
-                <td>{item.detailsSupplier}</td>
+                <td className="td-name">{item.namesupplier}</td>
+                <td>{item.emailsupplier}</td>
+                <td className="td-number">{item.numbersupplier} <br />
+                {item.alternativenumbersupplier && item.alternativenumbersupplier}
+                </td>
+                <td>{item.kindofsupplier}</td>
+                <td>{item.detailsupplier}</td>
 
                 <td>
                   <button
@@ -108,12 +111,12 @@ function ListSuppliers() {
                     onClick={async () => {
                       setSupplierArray((prev) =>
                         prev.map((supplier) => {
-                          return supplier._id === item._id
+                          return supplier.id === item.id
                             ? { ...supplier, fav: !supplier.fav }
                             : supplier;
                         })
                       );
-                      setSavinID(item._id);
+                      setSavinID(item.id);
                       setTrigger(!trigger);
                     }}
                   >
@@ -151,6 +154,7 @@ function ListSuppliers() {
           )}
         </tbody>
       </table>
+      </div>
     </>
   );
 }

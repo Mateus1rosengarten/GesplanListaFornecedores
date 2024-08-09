@@ -13,24 +13,91 @@
   }
 
   .modal-content {
-    display: block !important;
-    position: fixed !important;
-    top: 13vh !important;
-    left: 40vw !important;
-    padding: 2% !important;
+    display: flex !important;
+    flex-direction: column;
+    width: 30%;
+    min-width: 400px;
+    height: auto;
+    max-height: 95vh;
+    padding: 2.1rem !important;
+    margin: auto;
     z-index: 999 !important;    
     background-color: #F7F7F7 !important;
-    margin: 0 auto!important;
-    border-radius: 2px!important;
     border-radius: 3%!important;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3)!important;
-    overflow: hidden!important;
+    overflow: hidden;
+    
   
   }
 
+  .chakra-form-control {
+    width: 100% !important;
+  }
+  .heading-add-form{
+   margin-top: 5vh;
+
+  }
+
+  .close-modal-button , .add-supplier-button{
+    width: 100% !important;
+    min-width:300px !important
+  }
+ 
   .addPhone-button {
     position: absolute;
     left: 5px;
   }
 
+  .modal-content select{
+    min-width:300px !important ;
+  }
+
+  .modal-content input{
+    min-width:300px !important ;
+  } 
+
+  .modal-content textarea{
+    min-width:300px !important ;
+  }
+
+  .css-1b47een{
+    margin-bottom: 2vh !important;
+  }
+
+  .css-1f32si6{
+  margin-top: 1vh !important;
+  }
+
+  @media (max-height : 750px) {
+   .modal-content{
+    overflow-y: auto;
+   }
+  }
+
+  @media (max-width: 840px){
+    
+    h1{
+      font-size: x-large;
+    }
+    .modal-content textarea{
+      margin-bottom: 5vh;
+    }
+   }
+
+   @media (max-width: 768px) {
+    .css-g6pte {
+      display: inline !important;
+    }
+    .css-1kefhqr ,.css-1b47een{
+      width: 30vw !important;
+    }
+    
+   .kindOf-form-control{
+    width: 40vw !important;
+   }
+   .modal-content textarea {
+    margin-bottom: 0;
+   }
+   
+   }
   

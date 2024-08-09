@@ -1,17 +1,61 @@
-.add-button {
-    position: absolute;
-    right: 26vw;
-    top: 15vh;
+
+.container-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
 }
 
-.edit-button {
-    position: absolute;
-    left: 25vw;
-    top: 15vh;
+.div-button-add{
+    width: 50vw;
+    display: flex;
+    margin-right: 20vw;
 }
 
-.delete-button {
-    position: absolute;
-    left: 26vw;
-    top: 15vh;
+.delete-button{
+    margin-left: 1vw;
+}
+
+@media (max-width: 840px) {
+    .div-button-add{
+        margin-right: 0;
+    }
+    .container-buttons{
+        margin-left: 0;
+        margin-right: 0;
+    } 
+ .add-button{
+   margin-left:6vw;
+   min-width: 30% !important;
+ }
+.delete-button{
+  margin-right: 6vw;
+
+}}
+
+
+@media (min-width: 1675px) {
+    .add-button{
+        margin-left: 6vw;
+    }
+    .delete-button {
+        margin-right: 6vw;
+    }
+ 
+
+}
+
+@media (max-width: 768px) {
+    .container-buttons {
+        justify-content: space-around !important;
+    }
+
+    .div-button-add {
+        width: 30%;
+    }
+
+    .add-button{
+        min-width: 20vw !important;
+    }
 }

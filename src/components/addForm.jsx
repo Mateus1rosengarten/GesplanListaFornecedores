@@ -15,7 +15,6 @@ import {
   Stack,
   useToast,
 } from "@chakra-ui/react";
-import { useEffect } from "react";
 
 function AddForm() {
   const { supplierValues, setSupplierValues } = useContext(suppliersDataContext);
@@ -29,17 +28,22 @@ function AddForm() {
 
   const checkingFormValidation = () => {
     return new Promise((resolve) => {
-      const phoneNumberRegex = /^\(\d{2}\) \d \d{4} \d{4}$/;
+      const phoneNumberRegex = /^\(\d{2}\)\s?\d\s?\d{4}\s?\d{4}$|^\(\d{2}\)\s?\d{8,9}$|^\(\d{2}\)\d\s\d{8}$|^\(\d{2}\)\s?\d{9}$/;
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com$/;
 
-      const validNumber = phoneNumberRegex.test(supplierValues.numberSupplier);
-      const validEmail = emailRegex.test(supplierValues.emailSupplier);
+      const validNumber = phoneNumberRegex.test(supplierValues.numbersupplier);
+      const validEmail = emailRegex.test(supplierValues.emailsupplier);
+
+      console.log(
+        supplierValues.namesupplier,supplierValues.emailsupplier,supplierValues.numbersupplier,supplierValues.kindofsupplier,supplierValues.detailsupplier
+        ,validNumber,validEmail
+      )
 
       if (
-        supplierValues.nameSupplier.length <= 3 ||
+        supplierValues.namesupplier.length <= 3 ||
         !validEmail ||
         !validNumber ||
-        !supplierValues.kindOfSupplier
+        !supplierValues.kindofsupplier
       ) {
         setDataFormIsValid(false);
         toast({
@@ -62,10 +66,12 @@ function AddForm() {
       const validFormData = await checkingFormValidation();
 
       if (validFormData) {
+        
         const response = await axios.post("http://localhost:3000/create",supplierValues);
+        console.log('response from submit createForm',response);
         toast({
           title: "Sucesso:",
-          description: `${supplierValues.kindOfSupplier} adicionado com sucesso!`,
+          description: `${supplierValues.kindofsupplier} adicionado com sucesso!`,
           duration: "2000",
           isClosable: true,
         });
@@ -85,7 +91,7 @@ function AddForm() {
       <div className="add-form">
         <div className="overlay">
           <div className="modal-content">
-            <h1>Criar Novo Fornecedor</h1>
+            <h1 className="heading-add-form">Criar Novo Fornecedor</h1>
 
             <Box width="25vw" padding="5%" marginTop="2vw">
               <FormControl isRequired marginBottom="5%">
@@ -97,7 +103,7 @@ function AddForm() {
                   onChange={(e) =>
                     setSupplierValues({
                       ...supplierValues,
-                      nameSupplier: e.target.value,
+                      namesupplier: e.target.value,
                     })
                   }
                   id="name"
@@ -107,12 +113,13 @@ function AddForm() {
               <FormControl isRequired marginBottom="5%">
                 <FormLabel>Email</FormLabel>
                 <Input
+                
                   type="text"
                   placeholder="xxxxx@xxxx.com"
                   onChange={(e) =>
                     setSupplierValues({
                       ...supplierValues,
-                      emailSupplier: e.target.value,
+                      emailsupplier: e.target.value,
                     })
                   }
                   id="email"
@@ -122,19 +129,20 @@ function AddForm() {
               <FormControl isRequired marginBottom="5%">
                 <FormLabel>Telefone</FormLabel>
                 <Input
+                
                   type="tel"
-                  placeholder="(xx) x xxxx xxxx"
+                  placeholder="(xx)xxxxxxxxx"
                   onChange={(e) =>
                     setSupplierValues({
                       ...supplierValues,
-                      numberSupplier: e.target.value,
+                      numbersupplier: e.target.value,
                     })
                   }
                   id="phone"
                 />
               </FormControl>
 
-              <FormControl isRequired marginBottom="5%">
+              <FormControl isRequired marginBottom="5%" className="kindOf-form-control">
                 <FormLabel>Tipo de Fornecedor</FormLabel>
                 <Select
                   value={supplierValues.kindOfSupplier}
@@ -142,7 +150,7 @@ function AddForm() {
                   onChange={(e) =>
                     setSupplierValues({
                       ...supplierValues,
-                      kindOfSupplier: e.target.value,
+                      kindofsupplier: e.target.value,
                     })
                   }
                   id="kindOf"
@@ -157,11 +165,12 @@ function AddForm() {
               <FormControl marginBottom="15%">
                 <FormLabel>Detalhes</FormLabel>
                 <Textarea
+                resize={'none'}
                   type="text"
                   onChange={(e) =>
                     setSupplierValues({
                       ...supplierValues,
-                      detailsSupplier: e.target.value,
+                      detailsupplier: e.target.value,
                     })
                   }
                   id="pass"
@@ -170,6 +179,7 @@ function AddForm() {
 
               <Stack>
                 <Button
+                className="close-modal-button"
                   onClick={closingModal}
                   colorScheme="red"
                   variant="outline"
@@ -177,7 +187,9 @@ function AddForm() {
                 >
                   CANCELAR
                 </Button>
-                <Button onClick={submitForm} colorScheme="teal" size="sm">
+                <Button
+                className="add-supplier-button"
+                onClick={submitForm} colorScheme="teal" size="sm">
                   SALVAR
                 </Button>
               </Stack>
