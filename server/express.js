@@ -35,7 +35,12 @@ connectDB();
 
 
 
-app.use(cors());
+app.use(cors(
+  {
+credentials:true,    
+methods:["POST","GET"],
+  }
+));
 app.use(express.json());
 
 

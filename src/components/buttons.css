@@ -47,10 +47,11 @@
 }
 
 @media (max-width: 768px) {
-    .container-buttons {
-        justify-content: space-around !important;
-    }
 
+    .modal-content {
+        height: 100%!important;
+    }
+   
     .div-button-add {
         width: 30%;
     }
